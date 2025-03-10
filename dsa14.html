@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Numbers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 80%;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #sortedResult {
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sort Numbers in Ascending Order</h1>
+        
+        <input type="text" id="numberInput" placeholder="Enter numbers separated by commas">
+        <button onclick="sortNumbers()">Sort Numbers</button>
+
+        <div id="sortedResult">
+            <h3>Sorted Numbers:</h3>
+            <p id="output"></p>
+        </div>
+    </div>
+
+    <script>
+        function sortNumbers() {
+            let input = document.getElementById("numberInput").value;
+            let numberArray = input.split(",").map(function(item) {
+                return parseInt(item.trim());
+            });
+
+            // Check if the input is valid
+            if (numberArray.some(isNaN)) {
+                alert("Please enter valid numbers separated by commas.");
+                return;
+            }
+
+            // Sort the numbers
+            numberArray.sort(function(a, b) {
+                return a - b;
+            });
+
+            // Display the result
+            document.getElementById("output").innerText = numberArray.join(", ");
+        }
+    </script>
+
+</body>
+</html>
