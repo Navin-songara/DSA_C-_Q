@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stack Implementation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      background-color: white;
+      width: 300px;
+    }
+
+    .stack-display {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .stack {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .stack div {
+      background-color: #5cb85c;
+      color: white;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 5px;
+      width: 50px;
+      text-align: center;
+    }
+
+    input {
+      padding: 8px;
+      margin: 10px;
+    }
+
+    button {
+      padding: 8px 16px;
+      margin: 5px;
+      background-color: #0275d8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #025aa5;
+    }
+
+    #message {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Stack Implementation</h2>
+    <div class="stack-display">
+      <div id="stack" class="stack"></div>
+    </div>
+    <input type="number" id="stackValue" placeholder="Enter number" />
+    <button onclick="push()">Push</button>
+    <button onclick="pop()">Pop</button>
+    <button onclick="peek()">Peek</button>
+    <button onclick="clearStack()">Clear</button>
+    <h3 id="message"></h3>
+  </div>
+
+  <script>
+    class Stack {
+      constructor() {
+        this.stackArray = [];
+      }
+
+      push(element) {
+        this.stackArray.push(element);
+      }
+
+      pop() {
+        if (this.isEmpty()) {
+          return "Stack is empty!";
+        }
+        return this.stackArray.pop();
+      }
+
+      peek() {
+        if (this.isEmpty()) {
+          return "Stack is empty!";
+        }
+        return this.stackArray[this.stackArray.length - 1];
+      }
+
+      isEmpty() {
+        return this.stackArray.length === 0;
+      }
+
+      getSize() {
+        return this.stackArray.length;
+      }
+
+      clear() {
+        this.stackArray = [];
+      }
+    }
+
+    const stack = new Stack();
+
+    function push() {
+      const value = document.getElementById("stackValue").value;
+      if (value) {
+        stack.push(value);
+        updateStackDisplay();
+        document.getElementById("stackValue").value = ""; // Clear input field
+      } else {
+        alert("Please enter a value!");
+      }
+    }
+
+    function pop() {
+      const poppedValue = stack.pop();
+      document.getElementById("message").innerText = poppedValue !== "Stack is empty!" ? `Popped: ${poppedValue}` : poppedValue;
+      updateStackDisplay();
+    }
+
+    function peek() {
+      const peekValue = stack.peek();
+      document.getElementById("message").innerText = peekValue !== "Stack is empty!" ? `Top: ${peekValue}` : peekValue;
+    }
+
+    function clearStack() {
+      stack.clear();
+      document.getElementById("message").innerText = "Stack cleared!";
+      updateStackDisplay();
+    }
+
+    function updateStackDisplay() {
+      const stackDiv = document.getElementById("stack");
+      stackDiv.innerHTML = ""; // Clear the current stack display
+
+      stack.stackArray.forEach(value => {
+        const div = document.createElement("div");
+        div.innerText = value;
+        stackDiv.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
