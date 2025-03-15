@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA: Find Maximum Element in Array</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Find Maximum Element in Array</h1>
+        <p id="arrayOutput">Array: [10, 25, 30, 45, 5, 99, 60]</p>
+        <button onclick="findMax()">Find Maximum Element</button>
+        <p id="maxOutput">Maximum Element: </p>
+    </div>
+
+    <script>
+        // script.js
+        function findMax() {
+            // Example array
+            const arr = [10, 25, 30, 45, 5, 99, 60];
+
+            // Find the maximum value in the array using JavaScript's Math.max() and the spread operator
+            const maxElement = Math.max(...arr);
+
+            // Display the maximum element on the webpage
+            document.getElementById("maxOutput").textContent = `Maximum Element: ${maxElement}`;
+        }
+    </script>
+</body>
+</html>
