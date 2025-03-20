@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* Skills Section */
+        .skills {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 0;
+        }
+
+        .skill {
+            text-align: center;
+            width: 30%;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        .progress {
+            height: 25px;
+            width: 0;
+            background-color: #4CAF50;
+        }
+
+        /* Projects Section */
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 50px 0;
+        }
+
+        .project-card {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            padding: 50px 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 70%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+                text-align: center;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>John Doe</h1>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="skill">
+            <h3>HTML</h3>
+            <div class="progress-bar">
+                <div class="progress" style="width: 90%"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <h3>CSS</h3>
+            <div class="progress-bar">
+                <div class="progress" style="width: 85%"></div>
+            </div>
+        </div>
+        <div class="skill">
+            <h3>JavaScript</h3>
+            <div class="progress-bar">
+                <div class="progress" style="width: 75%"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="project-card">
+            <img src="https://via.placeholder.com/300" alt="Project 1">
+            <h4>Project 1</h4>
+            <p>Description of Project 1</p>
+            <a href="#">View Demo</a>
+        </div>
+        <div class="project-card">
+            <img src="https://via.placeholder.com/300" alt="Project 2">
+            <h4>Project 2</h4>
+            <p>Description of Project 2</p>
+            <a href="#">View Demo</a>
+        </div>
+        <div class="project-card">
+            <img src="https://via.placeholder.com/300" alt="Project 3">
+            <h4>Project 3</h4>
+            <p>Description of Project 3</p>
+            <a href="#">View Demo</a>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact-form">
+        <h3>Contact Me</h3>
+        <form action="#">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 John Doe</p>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Twitter</a>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle for mobile view
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+        hamburger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
