@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Largest Element Finder</title>
+    <script>
+        function findSecondLargest() {
+            // Get the input array from the user
+            let input = document.getElementById('arrayInput').value;
+
+            // Convert the input string to an array of numbers
+            let arr = input.split(',').map(num => parseInt(num.trim()));
+
+            // Initialize variables to store the largest and second largest
+            let largest = -Infinity;
+            let secondLargest = -Infinity;
+
+            // Loop through the array to find the largest and second largest elements
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > largest) {
+                    secondLargest = largest;
+                    largest = arr[i];
+                } else if (arr[i] > secondLargest && arr[i] !== largest) {
+                    secondLargest = arr[i];
+                }
+            }
+
+            // Show the result
+            if (secondLargest === -Infinity) {
+                document.getElementById('result').innerText = "There is no second largest element.";
+            } else {
+                document.getElementById('result').innerText = "Second largest element is: " + secondLargest;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Find Second Largest Element</h1>
+    <p>Enter an array of integers (comma separated):</p>
+    <input type="text" id="arrayInput" placeholder="e.g., 12, 35, 1, 10, 34">
+    <button onclick="findSecondLargest()">Find Second Largest</button>
+    <p id="result"></p>
+</body>
+</html>
