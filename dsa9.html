@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Stock Table</title>
+    <style>
+        .low-stock {
+            background-color: red;
+            color: white;
+        }
+        .high-stock {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Product Stock Table</h2>
+
+<table id="productTable" border="1" cellpadding="10">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Product 1</td>
+            <td>$10</td>
+            <td class="stock-count">5</td>
+        </tr>
+        <tr>
+            <td>Product 2</td>
+            <td>$15</td>
+            <td class="stock-count">12</td>
+        </tr>
+        <tr>
+            <td>Product 3</td>
+            <td>$25</td>
+            <td class="stock-count">8</td>
+        </tr>
+        <tr>
+            <td>Product 4</td>
+            <td>$30</td>
+            <td class="stock-count">20</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    // JavaScript to highlight rows based on stock count
+    const rows = document.querySelectorAll('#productTable tbody tr');
+    
+    rows.forEach(row => {
+        const stock = row.querySelector('.stock-count').innerText;
+        
+        if (stock < 10) {
+            row.classList.add('low-stock');
+        } else {
+            row.classList.add('high-stock');
+        }
+    });
+</script>
+
+</body>
+</html>
