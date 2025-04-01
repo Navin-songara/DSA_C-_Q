@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
+        .success {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="registrationForm" onsubmit="return validateForm()">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <div id="nameError" class="error"></div>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <div id="emailError" class="error"></div>
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <div id="passwordError" class="error"></div>
+    </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+<div id="successMessage" class="success"></div>
+
+<script>
+    function validateForm() {
+        // Reset previous error messages
+        document.getElementById("nameError").innerHTML = "";
+        document.getElementById("emailError").innerHTML = "";
+        document.getElementById("passwordError").innerHTML = "";
+        document.getElementById("successMessage").innerHTML = "";
+
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        let isValid = true;
+
+        // Validate name
+        if (name.trim() === "") {
+            document.getElementById("nameError").innerHTML = "Name cannot be empty.";
+            isValid = false;
+        }
+
+        // Validate email
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").innerHTML = "Please enter a valid email address.";
+            isValid = false;
+        }
+
+        // Validate password
+        if (password.length < 8) {
+            document.getElementById("passwordError").innerHTML = "Password must be at least 8 characters long.";
+            isValid = false;
+        }
+
+        // If all fields are valid, show success message and prevent form submission
+        if (isValid) {
+            document.getElementById("successMessage").innerHTML = "Form submitted successfully!";
+            return false; // Prevent actual form submission for this example
+        }
+
+        // If any field is invalid, prevent form submission
+        return false;
+    }
+</script>
+
+</body>
+</html>
