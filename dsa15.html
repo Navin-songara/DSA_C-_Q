@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        .sortable:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>User Information Table</h2>
+<input type="text" id="searchInput" placeholder="Search by name..." onkeyup="searchTable()">
+
+<table id="userTable">
+    <thead>
+        <tr>
+            <th class="sortable" onclick="sortTable(0)">Name</th>
+            <th class="sortable" onclick="sortTable(1)">Age</th>
+            <th class="sortable" onclick="sortTable(2)">Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Table rows will be dynamically generated here -->
+    </tbody>
+</table>
+
+<script>
+    // Initial user data
+    const users = [
+        { name: "Alice", age: 30, country: "USA" },
+        { name: "Bob", age: 25, country: "UK" },
+        { name: "Charlie", age: 35, country: "Canada" },
+        { name: "David", age: 40, country: "Australia" },
+        { name: "Eva", age: 22, country: "Germany" }
+    ];
+
+    // Function to render the table
+    function renderTable(users) {
+        const tableBody = document.querySelector('#userTable tbody');
+        tableBody.innerHTML = ''; // Clear the current table
+        users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${user.name}</td><td>${user.age}</td><td>${user.country}</td>`;
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Function to sort the table based on the column index
+    function sortTable(colIndex) {
+        const table = document.querySelector("#userTable");
+        const rows = Array.from(table.rows).slice(1); // Get rows excluding the header row
+        const isNumeric = colIndex === 1; // Check if sorting by "Age", which is numeric
+
+        rows.sort((rowA, rowB) => {
+            const cellA = rowA.cells[colIndex].textContent;
+            const cellB = rowB.cells[colIndex].textContent;
+
+            if (isNumeric) {
+                return parseInt(cellA) - parseInt(cellB); // Numeric sort for age
+            } else {
+                return cellA.localeCompare(cellB); // Lexicographic sort for name and country
+            }
+        });
+
+        // Append the sorted rows back to the table
+        rows.forEach(row => table.appendChild(row));
+    }
+
+    // Function to filter the table based on the search input
+    function searchTable() {
+        const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+        const filteredUsers = users.filter(user => user.name.toLowerCase().includes(searchQuery));
+        renderTable(filteredUsers);
+    }
+
+    // Initial render of the table
+    renderTable(users);
+</script>
+
+</body>
+</html>
