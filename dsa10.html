@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Nested HTML Structure</title>
+</head>
+<body>
+
+  <script>
+    // Function to generate the HTML structure from the array of objects
+    function generateHTMLStructure(arr) {
+        // Helper function to create the HTML element recursively
+        function createElement(item) {
+            // Create the element
+            const element = document.createElement(item.tag);
+            // Set the id if available
+            if (item.id) {
+                element.id = item.id;
+            }
+            // Recursively append children
+            if (item.children && item.children.length > 0) {
+                item.children.forEach(child => {
+                    element.appendChild(createElement(child));
+                });
+            }
+            return element;
+        }
+
+        // Start building the structure from the array
+        const rootElement = arr.map(item => createElement(item))[0];
+        return rootElement;
+    }
+
+    // Input data (array of objects representing the structure)
+    const inputData = [
+        {
+            tag: "div",
+            id: "root",
+            children: [
+                {
+                    tag: "section",
+                    id: "section1",
+                    children: [
+                        { tag: "div", id: "child1", children: [] },
+                        { tag: "div", id: "child2", children: [] }
+                    ]
+                },
+                {
+                    tag: "section",
+                    id: "section2",
+                    children: [
+                        { tag: "div", id: "child3", children: [] }
+                    ]
+                }
+            ]
+        }
+    ];
+
+    // Generate the HTML structure
+    const htmlStructure = generateHTMLStructure(inputData);
+    // Append the generated structure to the body of the document
+    document.body.appendChild(htmlStructure);
+  </script>
+
+</body>
+</html>
