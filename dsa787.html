@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Implementation</title>
+    <script>
+        class Queue {
+            constructor() {
+                this.items = [];
+            }
+
+            enqueue(element) {
+                this.items.push(element);
+            }
+
+            dequeue() {
+                if (this.isEmpty()) {
+                    return "Queue is empty";
+                }
+                return this.items.shift();
+            }
+
+            peek() {
+                if (this.isEmpty()) {
+                    return "Queue is empty";
+                }
+                return this.items[0];
+            }
+
+            isEmpty() {
+                return this.items.length === 0;
+            }
+
+            size() {
+                return this.items.length;
+            }
+        }
+
+        let queue = new Queue();
+
+        function enqueueElement() {
+            let element = document.getElementById("enqueueInput").value;
+            queue.enqueue(element);
+            document.getElementById("queueState").innerText = "Queue: " + queue.items.join(", ");
+        }
+
+        function dequeueElement() {
+            let element = queue.dequeue();
+            document.getElementById("queueState").innerText = "Queue: " + queue.items.join(", ");
+            document.getElementById("dequeueResult").innerText = "Dequeued: " + element;
+        }
+    </script>
+</head>
+<body>
+    <h1>Queue Implementation</h1>
+    <input type="text" id="enqueueInput" placeholder="Enter an element to enqueue" />
+    <button onclick="enqueueElement()">Enqueue</button>
+    <button onclick="dequeueElement()">Dequeue</button>
+    <p id="queueState">Queue: </p>
+    <p id="dequeueResult">Dequeued: </p>
+</body>
+</html>
