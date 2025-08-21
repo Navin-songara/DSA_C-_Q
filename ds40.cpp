@@ -1,3 +1,4 @@
+//  Character and bool string OR stack 
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -22,3 +23,4 @@ int main() {
     string input = "{[()]}";
     cout << (isBalanced(input) ? "Balanced" : "Not Balanced");
 }
+
