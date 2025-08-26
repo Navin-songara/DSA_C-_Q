@@ -1,3 +1,4 @@
+// longest palindrome
 function longestPalindrome(s) {
   let start = 0, end = 0;
   for (let i = 0; i < s.length; i++) {
@@ -23,3 +24,4 @@ function expand(s, left, right) {
 
 // Test
 console.log(longestPalindrome("babad")); // "bab" or "aba"
+
