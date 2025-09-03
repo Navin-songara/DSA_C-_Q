@@ -1,3 +1,4 @@
+<!-- Event sort -->
 function getSkyline(buildings) {
   const events = [];
   for (let [l, r, h] of buildings) {
