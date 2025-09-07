@@ -1,3 +1,4 @@
+// Trie Node
 class TrieNode {
   constructor() {
     this.left = null;  // bit 0
