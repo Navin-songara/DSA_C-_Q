@@ -1,3 +1,4 @@
+// node
 function cloneGraph(node) {
   if (!node) return null;
 
