@@ -1,3 +1,4 @@
+// Word break
 function wordBreak(s, wordDict) {
   const dp = new Array(s.length + 1).fill(false);
   dp[0] = true;
@@ -15,3 +16,4 @@ function wordBreak(s, wordDict) {
 
 // Test
 console.log(wordBreak("leetcode", ["leet", "code"])); // true
+
