@@ -1,3 +1,4 @@
+// trap function 
 function trap(height) {
   let left = 0, right = height.length - 1;
   let leftMax = 0, rightMax = 0, result = 0;
