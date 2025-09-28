@@ -1,3 +1,4 @@
+// Max coins
 function maxCoins(nums) {
   nums = [1, ...nums, 1];
   const n = nums.length;
@@ -20,3 +21,4 @@ function maxCoins(nums) {
 
 // Test
 console.log(maxCoins([3,1,5,8])); // Output: 167
+
