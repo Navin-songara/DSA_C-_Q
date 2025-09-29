@@ -1,3 +1,4 @@
+// Bubble UP
 class MinHeap {
   constructor() {
     this.heap = [];
@@ -78,3 +79,4 @@ function mergeKLists(lists) {
 
   return dummy.next;
 }
+
