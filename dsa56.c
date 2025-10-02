@@ -1,3 +1,5 @@
+// Array
+
 #include <stdio.h>
 
 void merge(int arr[], int l, int m, int r) {
@@ -30,3 +32,4 @@ int main() {
     for(int i = 0; i < n; i++) printf("%d ", arr[i]);
     return 0;
 }
+
