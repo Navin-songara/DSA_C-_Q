@@ -1,3 +1,4 @@
+// word break
 #include <iostream>
 #include <vector>
 #include <unordered_set>
@@ -25,3 +26,4 @@ int main() {
     vector<string> dict = {"leet", "code"};
     cout << (wordBreak(s, dict) ? "Can be segmented" : "Cannot be segmented") << endl;
 }
+
