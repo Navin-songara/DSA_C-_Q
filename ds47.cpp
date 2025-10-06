@@ -1,3 +1,4 @@
+// merge array 
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -19,3 +20,4 @@ int main() {
     vector<int> merged = mergeArrays(a, b);
     for(int x : merged) cout << x << " ";
 }
+
