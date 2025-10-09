@@ -1,3 +1,4 @@
+// back track
 function subsets(nums) {
   const result = [];
 
@@ -16,3 +17,4 @@ function subsets(nums) {
 
 // Test
 console.log(subsets([1, 2, 3]));
+
